@@ -19,15 +19,14 @@ function App() {
 
   async function reviewCode() {
   try {
-    const response = await axios.post(
-      process.env.REACT_APP_API_URL || 'http://localhost:3000',
-      { code }
-    );
+    const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:3000';
+    const response = await axios.post(apiUrl, { code });
     setReview(response.data);
   } catch (error) {
     setReview(`Error: ${error.response ? error.response.data.error : error.message}`);
   }
 }
+
   return (
     <>
       <main>
