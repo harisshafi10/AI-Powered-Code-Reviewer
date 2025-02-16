@@ -18,10 +18,16 @@ function App() {
   }, [])
 
   async function reviewCode() {
-    const response = await axios.post('https://ai-powered-code-reviewer-qdkk.onrender.com', { code })
-    setReview(response.data)
+  try {
+    const response = await axios.post(
+      process.env.REACT_APP_API_URL || 'http://localhost:5000',
+      { code }
+    );
+    setReview(response.data);
+  } catch (error) {
+    setReview(`Error: ${error.response ? error.response.data.error : error.message}`);
   }
-
+}
   return (
     <>
       <main>
