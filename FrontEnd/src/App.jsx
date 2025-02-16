@@ -20,7 +20,7 @@ function App() {
   async function reviewCode() {
   try {
     const response = await axios.post(
-      process.env.REACT_APP_API_URL || 'http://localhost:5000',
+      process.env.REACT_APP_API_URL || 'http://localhost:3000',
       { code }
     );
     setReview(response.data);
